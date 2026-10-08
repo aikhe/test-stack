@@ -42,8 +42,19 @@ Only `VITE_*` vars reach the browser.
 ## Dev
 
 - `bun install`
-- `bunx convex dev` (terminal 1, keeps backend in sync)
-- `bun run dev` (terminal 2)
-- `bun run lint`, `bun run build` (`tsc -b && vite build`)
+- `bunx convex dev` (terminal 1, keeps backend in sync, writes
+  `VITE_CONVEX_URL` to `.env.local`)
+- `bun run dev` (terminal 2, opens the Vite dev server with HMR)
+- `bun run lint`, `bun run build` to verify
+
+## Prod
+
+- `bun run build` — typechecks and emits the static bundle to `dist/`.
+- `bun run preview` — serves `dist/` locally to sanity-check the prod build.
+- Frontend: deploy `dist/` to any static host. Set `VITE_CONVEX_URL` (and
+  `VITE_CLERK_PUBLISHABLE_KEY` if using auth) in the host's env settings,
+  then rebuild — Vite bakes `VITE_*` vars in at build time.
+- Backend: `bunx convex deploy` pushes `convex/` to the production
+  deployment. Point the frontend's `VITE_CONVEX_URL` at that deployment.
 
 Repo: `github.com/aikhe/test-stack`, branch `main`.
