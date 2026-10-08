@@ -8,9 +8,9 @@ Vite + React + Tailwind + Convex starter on Bun.
 - React 19 + TypeScript + Vite 8
 - Tailwind CSS v4
 - Convex backend (local-first dev via `bunx convex dev`)
-
-Planned, not added yet: Zustand (state), TanStack Query (data fetching),
-ArkType (validation), auth (Clerk or better-auth).
+- Clerk auth (`VITE_CLERK_PUBLISHABLE_KEY` + a `convex` JWT template)
+- Zustand (UI state, `src/store.ts`), TanStack Query (non-Convex data,
+  `src/lib/queryClient.ts`), ArkType (validation, `src/lib/validators.ts`)
 
 ## Structure
 
